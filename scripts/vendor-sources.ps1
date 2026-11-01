@@ -23,7 +23,9 @@ $ErrorActionPreference = 'Stop'
 if (-not $Root) {
     # 必须解析成绝对路径：用相对路径调用脚本时 $PSCommandPath 也是相对的，
     # 直接 Split-Path 会把 vendor 建到 scripts/ 下面
-    $Root = Split-Path -Parent (Resolve-Path -LiteralPath $PSCommandPath).Path
+    $scriptDir = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $PSCommandPath }
+    if (-not [System.IO.Path]::IsPathRooted($scriptDir)) { $scriptDir = [System.IO.Path]::GetFullPath($scriptDir) }
+    $Root = Split-Path -Parent $scriptDir
 }
 $vendor = Join-Path $Root 'vendor'
 New-Item -ItemType Directory -Path $vendor -Force | Out-Null

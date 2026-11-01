@@ -10,7 +10,9 @@
 | 模型 | 权重仓库 | 文件数 | 总大小 | 最大单文件 |
 | :-- | :-- | --: | --: | --: |
 | DeepSeek-V4.1-Flash-1017 | [HF](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) · [ModelScope](https://modelscope.cn/models/deepseek-ai/DeepSeek-V4.1-Flash-1017) | 83 | **475.3 GB** | 94.56 GB |
-| Kimi K3 | [HF](https://huggingface.co/moonshotai/Kimi-K3) | 待查 | 约 **1.4 TB**（2.8T 参数 × MXFP4 估算） | 待查 |
+| Kimi K3 | [HF](https://huggingface.co/moonshotai/Kimi-K3) | 119 | **1453.8 GB** | 15.82 GB |
+
+两个模型合计 **1929.1 GB（1.88 TB）**。完整校验清单见 [`data/weights.lock.json`](../data/weights.lock.json)：202 个文件、每个都带 SHA256，共 101.9 KB。
 
 DeepSeek V4.1 Flash 的实测数字来自 HuggingFace API（`?blobs=true`），2026-11-01 采样：
 
@@ -84,8 +86,51 @@ $env:HF_ENDPOINT = "https://hf-mirror.com"
 
 ---
 
-## 可选：记录校验和
+## 完整校验清单
 
-如果确实需要可验证的权重快照，正确做法是**记录 LFS 指针或 SHA256 清单**，而不是存权重本体。HuggingFace 每个仓库都提供 `refs/` 与文件级 SHA，可以只保存几十 KB 的清单，配合 `hf download --dry-run` 校验。
+权重不能进仓库，但**权重的指纹可以**。
 
-需要的话可以加一个 `weights.lock.json`（记录 83 个分片的 SHA256），体积约几十 KB。
+[`data/weights.lock.json`](../data/weights.lock.json) 记录了每个文件的路径、字节数和 SHA256：
+
+```json
+{
+  "generated_at": "2026-11-01T18:49:54+08:00",
+  "algorithm": "sha256",
+  "models": [
+    {
+      "key": "deepseek-v4.1-flash-1017",
+      "repo": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "revision": "1bae0e1088993b9b82de08f59de5be5a34e42170",
+      "file_count": 83,
+      "total_bytes": 510324508672,
+      "files": [
+        { "path": "model-00001-of-00048.safetensors", "size": 966367641,
+          "sha256": "13bd1210…", "source": "lfs-metadata", "blob": "…" }
+      ]
+    }
+  ]
+}
+```
+
+| 模型 | 文件 | 覆盖 | 来源 |
+| :-- | --: | --: | :-- |
+| deepseek-v4.1-flash-1017 | 83 | 83/83 | 49 个取自 LFS 元数据，34 个本地计算 |
+| kimi-k3 | 119 | 119/119 | 98 个取自 LFS 元数据，21 个本地计算 |
+
+**关键点**：大分片的 SHA256 直接由 HuggingFace 的 LFS 元数据提供（API 的 `?blobs=true`），**不需要下载 1.88 TB 才能算出来**。只有 config、tokenizer、参考推理代码这些小文件（合计约 20 MB）是下载后本地计算的。
+
+重新生成：
+
+```powershell
+powershell -File scripts/gen-weights-lock.ps1
+```
+
+拿到权重后校验：
+
+```powershell
+$lock = (Get-Content data/weights.lock.json -Raw | ConvertFrom-Json).models[0]
+foreach ($f in $lock.files) {
+    $actual = (Get-FileHash (Join-Path D:\models\deepseek $f.path) -Algorithm SHA256).Hash.ToLower()
+    if ($actual -ne $f.sha256) { Write-Warning "MISMATCH: $($f.path)" }
+}
+```
