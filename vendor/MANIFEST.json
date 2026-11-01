@@ -1,0 +1,170 @@
+{
+    "generated_at":  "2026-11-01T18:42:58+08:00",
+    "owner":  "deepseek-ai",
+    "note":  "Shallow snapshots (depth=1). Each entry records the upstream commit it was taken from.",
+    "total_bytes":  103015521,
+    "repos":  [
+                  {
+                      "repo":  "DeepInfer",
+                      "url":  "https://github.com/deepseek-ai/DeepInfer",
+                      "commit":  "553741557a57df44a46fb3ab72b6aafeaf945337",
+                      "commit_date":  "2026-10-25T19:59:27+08:00",
+                      "commit_msg":  "fix: validate boolean environment variables with strict parsing (#218)",
+                      "files":  371,
+                      "bytes":  7339250
+                  },
+                  {
+                      "repo":  "deepseek-recipe",
+                      "url":  "https://github.com/deepseek-ai/deepseek-recipe",
+                      "commit":  "935817c66f5d6e64838f419692545f06787e485f",
+                      "commit_date":  "2026-10-20T01:51:02+08:00",
+                      "commit_msg":  "docs: update build-python-wheel.md",
+                      "files":  168,
+                      "bytes":  16770997
+                  },
+                  {
+                      "repo":  "FlashMLA",
+                      "url":  "https://github.com/deepseek-ai/FlashMLA",
+                      "commit":  "395cb3afbb331fef7b1b21e9340861b9436b42d8",
+                      "commit_date":  "2026-10-27T10:50:39+08:00",
+                      "commit_msg":  "Fix a race on rowwise_max_buf before the li exchange in the SM100 sparse decode head64 kernel (#241)",
+                      "files":  179,
+                      "bytes":  1854604
+                  },
+                  {
+                      "repo":  "DeepGEMM",
+                      "url":  "https://github.com/deepseek-ai/DeepGEMM",
+                      "commit":  "5081f8513af57e61696de4f4f04b0e707ffb503e",
+                      "commit_date":  "2026-10-20T13:07:07+08:00",
+                      "commit_msg":  "Fix mega_mhc split barriers under CUDA graph replay (#478)",
+                      "files":  189,
+                      "bytes":  2238261
+                  },
+                  {
+                      "repo":  "DeepGEMM-Ascend",
+                      "url":  "https://github.com/deepseek-ai/DeepGEMM-Ascend",
+                      "commit":  "3a35326271b069b8b5bf1a754435acd6cc91575b",
+                      "commit_date":  "2026-10-14T17:22:30+08:00",
+                      "commit_msg":  "Merge pull request #12 from deepseek-ai/public-release-26/10",
+                      "files":  127,
+                      "bytes":  1368343
+                  },
+                  {
+                      "repo":  "TileKernels",
+                      "url":  "https://github.com/deepseek-ai/TileKernels",
+                      "commit":  "c1cf914a82e6901c679445f872051ce44ac2cc63",
+                      "commit_date":  "2026-10-14T13:49:06+08:00",
+                      "commit_msg":  "Merge pull request #38 from deepseek-ai/v2.1.0-release",
+                      "files":  209,
+                      "bytes":  1520519
+                  },
+                  {
+                      "repo":  "DeepSelect",
+                      "url":  "https://github.com/deepseek-ai/DeepSelect",
+                      "commit":  "bfa4507d935f17ebfc3d0f00ff7d3c9a4d0e5c18",
+                      "commit_date":  "2026-09-30T09:54:53+08:00",
+                      "commit_msg":  "Add Kernels for Huawei Ascend NPU (#23)",
+                      "files":  99,
+                      "bytes":  898743
+                  },
+                  {
+                      "repo":  "DeepJIT",
+                      "url":  "https://github.com/deepseek-ai/DeepJIT",
+                      "commit":  "18fe520b0473fc45d32d2f0e86923da707de19ab",
+                      "commit_date":  "2026-10-19T11:56:41+08:00",
+                      "commit_msg":  "Merge pull request #29 from deepseek-ai/fix-backtrace-thread-safety",
+                      "files":  133,
+                      "bytes":  614695
+                  },
+                  {
+                      "repo":  "DeepSpec",
+                      "url":  "https://github.com/deepseek-ai/DeepSpec",
+                      "commit":  "005e03b81cec38b7da6399833d609ee89a2587f2",
+                      "commit_date":  "2026-07-09T12:37:14+08:00",
+                      "commit_msg":  "Merge pull request #62 from jessiewei7/fix/atomic-step-latest-symlink",
+                      "files":  121,
+                      "bytes":  13176673
+                  },
+                  {
+                      "repo":  "DeepEP",
+                      "url":  "https://github.com/deepseek-ai/DeepEP",
+                      "commit":  "f6aa38fe06cd4a0489e7730365d4e0114970a2f3",
+                      "commit_date":  "2026-10-21T11:50:43+08:00",
+                      "commit_msg":  "fix: use HTTPS for DeepJIT submodule (#788)",
+                      "files":  155,
+                      "bytes":  3550792
+                  },
+                  {
+                      "repo":  "DeepEP-Ascend",
+                      "url":  "https://github.com/deepseek-ai/DeepEP-Ascend",
+                      "commit":  "3b25377d04b24fc6154698ded78a2bcb2c59afff",
+                      "commit_date":  "2026-09-29T20:59:51+08:00",
+                      "commit_msg":  "Initial public release",
+                      "files":  115,
+                      "bytes":  740690
+                  },
+                  {
+                      "repo":  "EPLB",
+                      "url":  "https://github.com/deepseek-ai/EPLB",
+                      "commit":  "d52c72d5b2f2fb4c41afbf8eb21366820239913d",
+                      "commit_date":  "2025-03-24T17:17:10+08:00",
+                      "commit_msg":  "Fix missing device for pphy2mlog tensor",
+                      "files":  34,
+                      "bytes":  118350
+                  },
+                  {
+                      "repo":  "LPLB",
+                      "url":  "https://github.com/deepseek-ai/LPLB",
+                      "commit":  "0490f79452f7ef277e814449600b1b1dd4c663b3",
+                      "commit_date":  "2025-11-19T15:19:47+08:00",
+                      "commit_msg":  "Initial commit.",
+                      "files":  48,
+                      "bytes":  154802
+                  },
+                  {
+                      "repo":  "DualPipe",
+                      "url":  "https://github.com/deepseek-ai/DualPipe",
+                      "commit":  "030ce4325f4ebeb437da4ebc6d00a70469dd58ae",
+                      "commit_date":  "2026-01-14T14:34:58+08:00",
+                      "commit_msg":  "fix: Use strings in __all__ instead of class objects",
+                      "files":  42,
+                      "bytes":  2762458
+                  },
+                  {
+                      "repo":  "profile-data",
+                      "url":  "https://github.com/deepseek-ai/profile-data",
+                      "commit":  "449602428a1b023acb8a505d4f34fef536535db6",
+                      "commit_date":  "2025-03-21T10:23:50+08:00",
+                      "commit_msg":  "Update README.md",
+                      "files":  36,
+                      "bytes":  29746505
+                  },
+                  {
+                      "repo":  "3FS",
+                      "url":  "https://github.com/deepseek-ai/3FS",
+                      "commit":  "22fca04564c7cc230fd8b9523b8b92864e1dad47",
+                      "commit_date":  "2026-05-07T17:31:53+08:00",
+                      "commit_msg":  "[Fix] Ensure ChainTable\u0027s version is monotonically increasing (#413)",
+                      "files":  1322,
+                      "bytes":  17491090
+                  },
+                  {
+                      "repo":  "smallpond",
+                      "url":  "https://github.com/deepseek-ai/smallpond",
+                      "commit":  "52ecc5e45535c7448f848bcb45b0da00d9484f81",
+                      "commit_date":  "2025-03-05T22:46:23+08:00",
+                      "commit_msg":  "reformat code with --line-length=150 (#18)",
+                      "files":  107,
+                      "bytes":  852038
+                  },
+                  {
+                      "repo":  "open-infra-index",
+                      "url":  "https://github.com/deepseek-ai/open-infra-index",
+                      "commit":  "56d86855fcf6e08fdfd45ce6280bd24322c93351",
+                      "commit_date":  "2025-05-15T10:00:11+08:00",
+                      "commit_msg":  "update 202505 industry track paper",
+                      "files":  38,
+                      "bytes":  1816711
+                  }
+              ]
+}

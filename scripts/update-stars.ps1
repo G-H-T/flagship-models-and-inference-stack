@@ -1,4 +1,4 @@
-#!/usr/bin/env pwsh
+﻿#!/usr/bin/env pwsh
 <#
 .SYNOPSIS
     Refresh star counts in data/deepseek-inference-repos.json from the GitHub API.
@@ -14,10 +14,12 @@
 #>
 [CmdletBinding()]
 param(
-    [string]$DataFile = (Join-Path $PSScriptRoot '..' 'data' 'deepseek-inference-repos.json')
+    [string]$DataFile
 )
 
 $ErrorActionPreference = 'Stop'
+
+if (-not $DataFile) { $DataFile = Join-Path (Split-Path -Parent $PSCommandPath) '..\data\deepseek-inference-repos.json' }
 
 if (-not (Test-Path $DataFile)) {
     throw "Data file not found: $DataFile"

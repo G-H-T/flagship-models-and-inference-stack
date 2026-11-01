@@ -16,6 +16,8 @@
 | :-- | :-- | :-- |
 | 模型 | Kimi K3、DeepSeek V4.1 Flash 的架构、规格、评测、部署方式 | [models](#一旗舰模型) |
 | 推理栈 | DeepSeek 官方开源的**全部**推理相关组件，按六层拆解 | [推理栈](#二deepseek-推理技术栈全景) |
+| 源码 | 18 个推理仓库的完整源代码，已在 `vendor/` 内 | [vendor](vendor/) |
+| 权重 | 体积、来源与下载方式（**本体不在仓库内**） | [weights](docs/weights.md) |
 | 数据 | 机器可读的 `data/*.json` + 星标刷新脚本 | [data](data/) |
 
 ---
@@ -167,17 +169,46 @@ DeepSeek 与 Kimi 都在官方文档里推荐第三方引擎，这两个是当�
 
 ---
 
-## 四、数据与更新
+## 四、完整源码
+
+18 个 DeepSeek 推理相关仓库的**完整源代码**已直接放进 [`vendor/`](vendor/)，不再只是链接。每个都是 `depth=1` 的浅克隆快照，去掉 `.git` 后成为本仓库的普通文件，因此可以离线阅读、全文搜索、直接 diff。
+
+来源 commit 记录在 [`vendor/MANIFEST.json`](vendor/MANIFEST.json)，包含上游 commit SHA、提交时间和文件清单。重新抓取：
+
+```powershell
+pwsh -File scripts/vendor-sources.ps1
+```
+
+| 目录 | 内容 |
+| :-- | :-- |
+| [`vendor/DeepInfer`](vendor/DeepInfer) | 生产推理引擎 |
+| [`vendor/deepseek-recipe`](vendor/deepseek-recipe) | API 格式适配层 |
+| [`vendor/FlashMLA`](vendor/FlashMLA) · [`DeepGEMM`](vendor/DeepGEMM) · [`DeepGEMM-Ascend`](vendor/DeepGEMM-Ascend) · [`TileKernels`](vendor/TileKernels) · [`DeepSelect`](vendor/DeepSelect) · [`DeepJIT`](vendor/DeepJIT) | 算子 / 内核 |
+| [`vendor/DeepSpec`](vendor/DeepSpec) | 投机解码 |
+| [`vendor/DeepEP`](vendor/DeepEP) · [`DeepEP-Ascend`](vendor/DeepEP-Ascend) · [`EPLB`](vendor/EPLB) · [`LPLB`](vendor/LPLB) · [`DualPipe`](vendor/DualPipe) · [`profile-data`](vendor/profile-data) | 并行 / 调度 |
+| [`vendor/3FS`](vendor/3FS) · [`vendor/smallpond`](vendor/smallpond) | 存储 / 数据 |
+| [`vendor/open-infra-index`](vendor/open-infra-index) | 基础设施索引文档 |
+
+**关于许可**：各目录保留原始 `LICENSE` 文件，版权归 DeepSeek 及各贡献者所有。本仓库只做搬运，不改变任何授权条款。其中 `DeepEP-Ascend`、`profile-data` 上游未声明许可，引用前请自行判断。
+
+**关于时效**：`vendor/` 是快照，不是跟踪上游最新代码的镜像。要最新代码请直接 clone 上游。
+
+**关于权重**：模型权重**不在**本仓库。DeepSeek V4.1 Flash 是 475 GB / 83 个分片（最大单片 94.56 GB），Kimi K3 约 1.4 TB——超 GitHub 单文件上限 100 MB 近千倍，本机磁盘也放不下。体积明细、失败原因和本地下载脚本见 [`docs/weights.md`](docs/weights.md)。
+
+---
+
+## 五、数据与更新
 
 ```
 data/
 ├── models.json                    # 模型规格
 └── deepseek-inference-repos.json  # 推理栈仓库清单（含分类、星标、许可）
 scripts/
-└── update-stars.ps1               # 重新拉取星标并就地更新 JSON
+├── update-stars.ps1               # 重新拉取星标并就地更新 JSON
+└── vendor-sources.ps1             # 重新抓取全部源码到 vendor/
 ```
 
-刷新数据：
+刷新星标：
 
 ```powershell
 pwsh -File scripts/update-stars.ps1

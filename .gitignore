@@ -11,3 +11,11 @@ desktop.ini
 # local
 *.local.json
 .env
+
+# 模型权重：体积数百 GB，远超 git 承载能力，只记录来源不落库
+weights/
+models/
+*.safetensors
+*.gguf
+*.pt
+*.pth

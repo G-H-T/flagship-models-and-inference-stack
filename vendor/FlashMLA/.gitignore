@@ -1,0 +1,14 @@
+build
+*.so
+flash_mla/_build_info.py
+*.egg-info/
+__pycache__/
+dist/
+*perf.csv
+*.png
+/.vscode
+compile_commands.json
+.cache
+/dev
+/.clangd
+/profiling
