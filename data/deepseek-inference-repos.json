@@ -1,0 +1,246 @@
+{
+  "snapshot_date": "2026-11-01",
+  "source": "https://api.github.com/orgs/deepseek-ai/repos?per_page=100",
+  "note": "star 数为当日 GitHub API 快照，会随时间变化。用 scripts/update-stars.ps1 刷新。",
+  "layers": [
+    {
+      "id": "engine",
+      "name": "① 引擎 / 服务层",
+      "repos": [
+        {
+          "name": "DeepInfer",
+          "url": "https://github.com/deepseek-ai/DeepInfer",
+          "stars": 24734,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "description": "High-performance, large-scale inference framework for DeepSeek models",
+          "role": "生产级推理引擎，开源版提供离线推理；支持 V4.1-Flash，NVIDIA SM100 / 昇腾 950"
+        },
+        {
+          "name": "deepseek-recipe",
+          "url": "https://github.com/deepseek-ai/deepseek-recipe",
+          "stars": 2689,
+          "language": "Rust",
+          "license": "MIT",
+          "description": "Request/Conversation conversion, prompt rendering and tokenizer bindings",
+          "role": "引擎前的格式适配层：请求格式转换、prompt 渲染、tokenizer 编码"
+        }
+      ]
+    },
+    {
+      "id": "kernels",
+      "name": "② 算子 / 内核层",
+      "repos": [
+        {
+          "name": "FlashMLA",
+          "url": "https://github.com/deepseek-ai/FlashMLA",
+          "stars": 13226,
+          "language": "C++",
+          "license": "MIT",
+          "description": "Efficient Multi-head Latent Attention Kernels",
+          "role": "MLA 注意力高效内核"
+        },
+        {
+          "name": "DeepGEMM",
+          "url": "https://github.com/deepseek-ai/DeepGEMM",
+          "stars": 9139,
+          "language": "CUDA",
+          "license": "MIT",
+          "description": "clean and efficient BLAS kernel library on GPU",
+          "role": "FP8 路线的高效 GEMM 库"
+        },
+        {
+          "name": "DeepGEMM-Ascend",
+          "url": "https://github.com/deepseek-ai/DeepGEMM-Ascend",
+          "stars": 624,
+          "language": "C++",
+          "license": "MIT",
+          "description": "clean and efficient matrix multiplication kernel library for Huawei Ascend NPUs",
+          "role": "昇腾 NPU 版矩阵乘内核库"
+        },
+        {
+          "name": "TileKernels",
+          "url": "https://github.com/deepseek-ai/TileKernels",
+          "stars": 2021,
+          "language": "Python",
+          "license": "MIT",
+          "description": "A kernel library written in tilelang",
+          "role": "TileLang 编写的内核库"
+        },
+        {
+          "name": "DeepSelect",
+          "url": "https://github.com/deepseek-ai/DeepSelect",
+          "stars": 527,
+          "language": "CUDA",
+          "license": "MIT",
+          "description": "TopK kernels for DeepSeek Sparse Attention (DSA) and Samplers",
+          "role": "DSA 稀疏注意力 TopK 内核与采样器"
+        },
+        {
+          "name": "DeepJIT",
+          "url": "https://github.com/deepseek-ai/DeepJIT",
+          "stars": 437,
+          "language": "C++",
+          "license": "MIT",
+          "description": "A lightweight library for xPU kernel JIT compilation",
+          "role": "xPU 内核 JIT 编译"
+        }
+      ]
+    },
+    {
+      "id": "decoding",
+      "name": "③ 解码加速层",
+      "repos": [
+        {
+          "name": "DeepSpec",
+          "url": "https://github.com/deepseek-ai/DeepSpec",
+          "stars": 7274,
+          "language": "Python",
+          "license": "MIT",
+          "description": "a full-stack codebase for training and evaluating speculative decoding algorithms",
+          "role": "投机解码训练与评测全栈"
+        }
+      ]
+    },
+    {
+      "id": "parallel",
+      "name": "④ 并行 / 调度层",
+      "repos": [
+        {
+          "name": "DeepEP",
+          "url": "https://github.com/deepseek-ai/DeepEP",
+          "stars": 10395,
+          "language": "CUDA",
+          "license": "MIT",
+          "description": "an efficient expert-parallel communication library",
+          "role": "专家并行通信库"
+        },
+        {
+          "name": "DeepEP-Ascend",
+          "url": "https://github.com/deepseek-ai/DeepEP-Ascend",
+          "stars": 283,
+          "language": "C++",
+          "license": "none",
+          "description": "high-performance communication library for ML training and inference on Huawei Ascend NPUs",
+          "role": "昇腾 NPU 版 EP 通信库"
+        },
+        {
+          "name": "EPLB",
+          "url": "https://github.com/deepseek-ai/EPLB",
+          "stars": 1466,
+          "language": "Python",
+          "license": "MIT",
+          "description": "Expert Parallelism Load Balancer",
+          "role": "冗余专家 + 按负载重排"
+        },
+        {
+          "name": "LPLB",
+          "url": "https://github.com/deepseek-ai/LPLB",
+          "stars": 545,
+          "language": "Python",
+          "license": "MIT",
+          "description": "early research stage expert-parallel load balancer for MoE models based on linear programming",
+          "role": "线性规划 EP 负载均衡（研究阶段）"
+        },
+        {
+          "name": "DualPipe",
+          "url": "https://github.com/deepseek-ai/DualPipe",
+          "stars": 3030,
+          "language": "Python",
+          "license": "MIT",
+          "description": "bidirectional pipeline parallelism for computation-communication overlap",
+          "role": "双向流水线并行，计算-通信重叠"
+        },
+        {
+          "name": "profile-data",
+          "url": "https://github.com/deepseek-ai/profile-data",
+          "stars": 1202,
+          "language": null,
+          "license": "none",
+          "description": "Analyze computation-communication overlap in V3/R1",
+          "role": "计算-通信重叠 profiling 数据"
+        }
+      ]
+    },
+    {
+      "id": "storage",
+      "name": "⑤ 存储 / 数据层",
+      "repos": [
+        {
+          "name": "3FS",
+          "url": "https://github.com/deepseek-ai/3FS",
+          "stars": 10402,
+          "language": "C++",
+          "license": "MIT",
+          "description": "high-performance distributed file system for AI training and inference workloads",
+          "role": "分布式文件系统，承载 KV cache 等落盘数据"
+        },
+        {
+          "name": "smallpond",
+          "url": "https://github.com/deepseek-ai/smallpond",
+          "stars": 5027,
+          "language": "Python",
+          "license": "MIT",
+          "description": "lightweight data processing framework built on DuckDB and 3FS",
+          "role": "基于 DuckDB + 3FS 的数据处理"
+        }
+      ]
+    },
+    {
+      "id": "ecosystem",
+      "name": "⑥ 索引 / 生态层",
+      "repos": [
+        {
+          "name": "open-infra-index",
+          "url": "https://github.com/deepseek-ai/open-infra-index",
+          "stars": 8120,
+          "language": null,
+          "license": "CC0-1.0",
+          "description": "Production-tested AI infrastructure tools for efficient AGI development",
+          "role": "基础设施索引，含《推理引擎开源路径》权威说明"
+        },
+        {
+          "name": "awesome-deepseek-integration",
+          "url": "https://github.com/deepseek-ai/awesome-deepseek-integration",
+          "stars": 39660,
+          "language": null,
+          "license": "none",
+          "description": "Integrate the DeepSeek API into popular software",
+          "role": "API 软件集成清单"
+        },
+        {
+          "name": "awesome-deepseek-agent",
+          "url": "https://github.com/deepseek-ai/awesome-deepseek-agent",
+          "stars": 6335,
+          "language": null,
+          "license": "none",
+          "description": "Agent ecosystem integrations",
+          "role": "Agent 生态集成清单"
+        }
+      ]
+    }
+  ],
+  "third_party_engines": [
+    {
+      "name": "vLLM",
+      "url": "https://github.com/vllm-project/vllm",
+      "note": "Kimi K3 官方推荐；DeepSeek 内部引擎源自其早期 fork"
+    },
+    {
+      "name": "SGLang",
+      "url": "https://github.com/sgl-project/sglang",
+      "note": "Kimi K3 官方推荐"
+    },
+    {
+      "name": "TokenSpeed",
+      "url": "https://lightseek.org/tokenspeed",
+      "note": "Kimi K3 官方推荐的第三个引擎"
+    }
+  ],
+  "gaps": [
+    "KV cache 系统",
+    "VE / Prefill / Decode 分离编排",
+    "DP 副本间全局负载均衡",
+    "集群管理与调度"
+  ]
+}

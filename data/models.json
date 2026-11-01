@@ -1,0 +1,71 @@
+{
+  "snapshot_date": "2026-11-01",
+  "note": "规格取自官方模型卡与发布公告；star 数取自 GitHub REST API 当日快照。",
+  "models": [
+    {
+      "name": "Kimi K3",
+      "org": "Moonshot AI",
+      "repo": "https://github.com/MoonshotAI/Kimi-K3",
+      "weights": "https://huggingface.co/moonshotai/Kimi-K3",
+      "type": "open-weight",
+      "architecture": "MoE",
+      "total_params": "2.8T",
+      "activated_params": "104B",
+      "layers": 93,
+      "dense_layers": 1,
+      "attention": {
+        "composition": "69 KDA + 24 Gated MLA",
+        "hidden_dim": 7168,
+        "heads": 96
+      },
+      "moe": {
+        "latent_dim": 3584,
+        "expert_hidden_dim": 3072,
+        "experts": 896,
+        "experts_per_token": 16,
+        "shared_experts": 2
+      },
+      "context_length": 1048576,
+      "vocab_size": 160000,
+      "activation_function": "SiTU-GLU",
+      "vision_encoder": "MoonViT-V2 (401M)",
+      "quantization": "MXFP4 weights / MXFP8 activations (QAT)",
+      "modalities": ["text", "image"],
+      "license": "Kimi K3 License",
+      "api_model_name": "kimi-k3",
+      "inference_engines": ["vLLM", "SGLang", "TokenSpeed"],
+      "github_stars": 9027
+    },
+    {
+      "name": "DeepSeek-V4.1-Flash-1017",
+      "org": "DeepSeek",
+      "repo": "https://github.com/deepseek-ai",
+      "weights": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "weights_mirror": "https://modelscope.cn/models/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "type": "open-weight",
+      "architecture": "MoE + Causal-Encoder-Decoder (asymmetric)",
+      "total_params": "552B",
+      "activated_params_input": "8B",
+      "activated_params_output": "16B",
+      "context_length": null,
+      "modalities": ["text", "image"],
+      "kv_cache": {
+        "hbm_vs_prev_gen": "1/4",
+        "ssd_vs_prev_gen": "1/8",
+        "vs_first_gen": "437x smaller"
+      },
+      "api_model_name": "deepseek-flash",
+      "released": "2026-10-17",
+      "inference_engine": "DeepInfer",
+      "hardware": ["NVIDIA SM100", "Huawei Ascend 950"],
+      "license": "see model card"
+    }
+  ],
+  "reference_models": [
+    { "name": "Claude Fable 5", "vendor": "Anthropic", "type": "proprietary" },
+    { "name": "Claude Opus 4.8", "vendor": "Anthropic", "type": "proprietary" },
+    { "name": "GPT-5.6 Sol", "vendor": "OpenAI", "type": "proprietary" },
+    { "name": "GPT-5.5", "vendor": "OpenAI", "type": "proprietary" },
+    { "name": "GLM-5.2", "vendor": "Zhipu AI", "type": "unknown" }
+  ]
+}
